@@ -526,10 +526,15 @@ console.log(realtorFees(listings[6]));
  */
 //WRITE YOUR CODE BELOW
 //sorted via id, uses coercion to change id to number
-let listing = [...listings]; //copy of listings so original is not changed (idk if this is required as per instructions)
-let listingAscendingly = listing.sort((a, b) => { //would replace listing with listings if above is not required
+let listingAscendingly = [...listings]; //copy of listings so original is not changed (idk if this is required as per instructions)
+listingAscendingly.sort((a, b) => { //sort function
   return a.id - b.id;
 })
+
+//not using deepcopy (modifies original data)
+// let listingAscendingly = listings.sort((a,b) => {
+//    return a.id - b.id;
+// })
 
 /**
  * Task-6: filter all the listings by bulitIn propertity for all houses built on or after 1990.
