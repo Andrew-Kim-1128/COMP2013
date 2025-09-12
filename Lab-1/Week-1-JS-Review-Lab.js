@@ -526,7 +526,8 @@ console.log(realtorFees(listings[6]));
  */
 //WRITE YOUR CODE BELOW
 //sorted via id, uses coercion to change id to number
-let listingAscendingly = listings.sort((a, b) => {
+let listing = [...listings]; //copy of listings so original is not changed (idk if this is required as per instructions)
+let listingAscendingly = listing.sort((a, b) => { //would replace listing with listings if above is not required
   return a.id - b.id;
 })
 
