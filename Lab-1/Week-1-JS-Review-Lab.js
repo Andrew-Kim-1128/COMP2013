@@ -472,6 +472,9 @@ const listings = [
   },
 ];
 
+//Andrew Kim 
+//COMP2013 Lab 1: JS review
+
 /**
  * Task-1: make a variable named listing0 and assign the first listing object
  * from the array above
@@ -485,6 +488,7 @@ let listing0 = listings[0];
  * and currentOwner which is a string with the value of Jane Doe
  */
 //WRITE YOUR CODE BELOW
+let listing1 = {...listing0, isSold: false, currentOwner: "Jane Doe"};
 
 /**
  * Task-3: print to console a text using template literals that contains the name of the owner,
@@ -493,6 +497,7 @@ let listing0 = listings[0];
  * "This house at (address) is owned by (currentOwner)"
  */
 //WRITE YOUR CODE BELOW
+console.log(`This house at ${listing1.address} is owned by ${listing1.currentOwner}`);
 
 /**
  * NOTE: THIS TASK IS TRICKY!
@@ -508,14 +513,37 @@ let listing0 = listings[0];
  * USE TERNARIES INSTEAD OF IF/ELSE STATEMENTS!
  */
 //WRITE YOUR CODE BELOW
+realtorFees = (listing) => {
+  numPrice = Number(listing.price.replace("$", "").replace(",", ""));
+  return numPrice <= 450000 ? (numPrice * 0.025) : (numPrice * 0.02);
+  //if numPrice <= 450000 return a, else return b
+}
+console.log(realtorFees(listings[2]));
+console.log(realtorFees(listings[6]));
 
 /**
  * Task-5: Sort the listing array ascendingly in a new variable called listingAscendingly
  */
 //WRITE YOUR CODE BELOW
+//sorted via id, uses coercion to change id to number
+let listingAscendingly = listings.sort((a, b) => {
+  return a.id - b.id;
+})
 
 /**
  * Task-6: filter all the listings by bulitIn propertity for all houses built on or after 1990.
  * Name the variable newBuiltListings
  */
 //WRITE YOUR CODE BELOW
+//not using regex (doesn't account for "Renovated 2009", and "unknown")
+let newBuiltListings = listings.filter((listing) => {
+  return listing.propertySummary.builtIn >= 1990;
+});
+console.log(newBuiltListings);
+
+//using regex (still doesn't account for "unknown", just does not return it)
+let newBuiltListingsRegex = listings.filter((listing) => {
+  formattedBuiltIn = listing.propertySummary.builtIn.replace(/[^0-9]/g, ''); //replace anything not 0-9 globally with empty string
+  return formattedBuiltIn >= 1990;
+})
+console.log(newBuiltListingsRegex);
