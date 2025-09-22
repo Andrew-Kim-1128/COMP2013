@@ -57,4 +57,25 @@
   width:500px;
   justify-content: space-around;
   align-items: center;
+  margin:auto;
+}
+
+.card-sale{
+  color: red; 
+}
+
+.card-sale-glow{
+  box-shadow: 0 0 10px 5px #61dafbaa;
+}
+
+@media screen and (max-width: 600px){
+  .main-container{
+    flex-direction: column;
+    width: 300px;
+  }
+  .Card-Component{
+    width: 90%;
+    margin: 20px;
+  }
+
 }
