@@ -12,7 +12,10 @@ export default function ColorBox({color, onClick}) {
         <div
             className = "ColorBox"
             style = {{backgroundColor: color}}  //set bg color to color prop
-            onClick = {onClick} //receives onClick logic from container component
+            onClick = {onClick} //receives onClick as a prop from container (parent) component
+            //allows for onClick logic to be handled in parent component, i could not figure out a way to 
+            //handle onClick randomization in ColorBox component without receiving colors array as prop
+            //https://react.dev/learn/responding-to-events#passing-event-handlers-as-props
         ></div>
     )
 }
